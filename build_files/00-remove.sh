@@ -63,10 +63,12 @@ dnf5 remove -y \
   gnome-disk-utility \
   gnome-screenshot \
   gnome-connections \
+  malcontent-control \
   baobab \
   evince \
   evince-libs \
-  loupe \
+  input-remapper \
+  ptyxis \
   eog \
   snapshot \
   totem \
