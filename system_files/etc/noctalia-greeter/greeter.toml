@@ -1,0 +1,101 @@
+# Santana OS administrator defaults for Noctalia Greeter.
+# Edit /etc/noctalia-greeter/greeter.toml on the installed system.
+# tmpfiles links the expected /var/lib path to this configuration.
+#
+# This file is the full admin config. Sync and the login UI never write it.
+# Mutable Sync/UI data lives in sync.toml (lower priority when both set).
+# Sync merges palette/wallpaper/session into sync.toml; a complete [appearance.palette] here wins.
+#
+# Omit any key for the built-in default.
+# Docs: https://docs.noctalia.dev/greeter/configuration/
+
+[session]
+# Exact Name= from the session .desktop (same as `noctalia-greeter sessions` / the picker).
+# Not the .desktop basename — e.g. "Hyprland (uwsm-managed)", not "hyprland-uwsm".
+default = "Umbriel"
+
+[user]
+# Opens the password step for this account on startup.
+default = "pedro"
+
+[appearance]
+# Color scheme name: "Synced" (palette below or Sync sync.toml), or a builtin
+# like "Noctalia", "Catppuccin", .... Overrides last UI pick in sync.toml when set.
+scheme = "Synced"
+# Password mask: "default" (filled circles) or "random" (cycled glyph shapes).
+password_style = "default"
+# Hide the Noctalia brand logo on the login screen.
+hide_logo = true
+# Leave theme mode, corner radius, and font unset so Noctalia Sync controls them.
+
+# Required for a declarative Synced look (same keys Sync writes under [appearance.palette]).
+# When complete, this wins over Sync's sync.toml appearance.
+#[appearance.palette]
+#primary = "#fff59b"
+#on_primary = "#0e0e43"
+#secondary = "#a9aefe"
+#on_secondary = "#0e0e43"
+#tertiary = "#9BFECE"
+#on_tertiary = "#0e0e43"
+#error = "#FD4663"
+#on_error = "#0e0e43"
+#surface = "#070722"
+#on_surface = "#f3edf7"
+#surface_variant = "#11112d"
+#on_surface_variant = "#7c80b4"
+#outline = "#21215F"
+#shadow = "#070722"
+#hover = "#9BFECE"
+#on_hover = "#0e0e43"
+
+#[appearance.wallpaper]
+# Absolute path, or color:#RRGGBB. fill_mode: center | crop | fit | stretch | repeat
+#path = "/var/lib/noctalia-greeter/wallpaper.webp"
+#fill_mode = "crop"
+# fill_color = "#070722"
+
+# Optional per-connector wallpapers (overrides [appearance.wallpaper] for that output):
+# [appearance.wallpapers.DP-1]
+# path = "/var/lib/noctalia-greeter/wallpaper-DP-1.webp"
+# fill_mode = "crop"
+
+#[output]
+# Pin the greeter to one connector; omit to mirror on every monitor.
+# List names with: noctalia-greeter outputs
+#name = "DP-2"
+# Multi-monitor positions (logical pixels). Overrides Sync layout in sync.toml when set.
+#layout = "DP-1:0,0; DP-2:2560,0"
+# Preferred DRM mode size in pixels (both required if set).
+#width = 5120
+#height = 2160
+# Per-connector DRM transform. Overrides Sync transforms in sync.toml when set. Tokens: normal/0/none, 90, 180, 270, flipped, flipped-90, flipped-180, flipped-270
+#transforms = "DP-1:normal; DP-2:normal"
+# Per-connector scale matching the session (keeps layout coords valid). Overrides Sync scales when set.
+#scales = "DP-1:1; DP-2:1"
+# Manual UI scale for all outputs; omit -> per-output scales, else auto from display geometry.
+#scale = 1.5
+
+[output]
+scales = "HDMI-A-1:1; eDP-1:1"
+
+[idle]
+# Seconds with no input before blanking outputs; 0 disables (range 0-86400).
+timeout = 300
+
+[cursor]
+theme = "Adwaita"
+size = 24
+# Colon-separated search path when the theme is not under the default icon dirs.
+path = "/usr/share/icons"
+
+[keyboard]
+# Comma-separated for multiple layouts.
+layout = "us"
+variant = "altgr-intl"
+options = "grp:win_space_toggle,compose:ralt"
+# Start with Num Lock locked (default true if omitted).
+numlock = true
+
+[auth]
+# Allow empty password submit (fprintd / smartcard PAM). Default false.
+allow_empty_password = false
