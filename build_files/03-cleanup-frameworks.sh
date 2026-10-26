@@ -5,7 +5,7 @@ set -euo pipefail
 # Let DNF retain any libraries still required by portals or other applications.
 # In particular, keep GTK/libadwaita, GSettings schemas, gnome-keyring and the
 # GNOME portal needed by niri; a blanket 'gnome-*' removal would break them.
-dnf5 mark dependency --skip-unavailable \
+dnf5 mark dependency -y --skip-unavailable \
   gjs \
   'mutter*' \
   'gnome-desktop*' \
