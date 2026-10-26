@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Remove inherited Bluefin Community and Documentation launchers after installs.
+rm -f \
+  /usr/share/applications/discourse.desktop \
+  /usr/share/applications/documentation.desktop
+
 # Final cleanup: package transactions and image configuration are complete.
 dnf5 clean all
 rm -rf /var/lib/dnf/* /var/log/dnf*
