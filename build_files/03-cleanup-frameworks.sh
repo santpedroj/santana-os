@@ -30,7 +30,7 @@ rpm -q niri noctalia greetd noctalia-greeter \
   gnome-keyring gnome-keyring-pam \
   xdg-desktop-portal-gtk xdg-desktop-portal-gnome xdg-desktop-portal-kde
 
-for package in gdm gnome-shell gnome-session; do
+for package in gdm gnome-shell gnome-session malcontent-control; do
   if rpm -q "$package" >/dev/null 2>&1; then
     echo "Unexpected GNOME desktop package after cleanup: $package" >&2
     exit 1
